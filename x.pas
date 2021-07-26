@@ -12,9 +12,12 @@ type
     function GetGetModel: TModelConcorrencia;
     procedure SetGetModel(const Value: TModelConcorrencia);
   public
-    procedure CreateProperties; override; // This procedure is responsible for creating the DAO (Data Access Object - a class that handles the querying and SQL execution)
-    property GetModel: TModelConcorrencia read GetGetModel write SetGetModel; // This function converts the Model (type TModel) to TModelConcorrencia. It facilitates the handling of Concorrencia data
-    procedure ExecutarAntesGravar; override; // This procedure holds all procedures and coding that must be executed before saving the Concorrencia data into the database
+    procedure CreateProperties; override; 
+    // This procedure is responsible for creating the DAO (Data Access Object - a class that handles the querying and SQL execution)
+    property GetModel: TModelConcorrencia read GetGetModel write SetGetModel; 
+    // This function converts the Model (type TModel) to TModelConcorrencia. It facilitates the handling of Concorrencia data
+    procedure ExecutarAntesGravar; override; 
+    // This procedure holds all procedures and coding that must be executed before saving the Concorrencia data into the database
   end;
 
 implementation
@@ -41,7 +44,8 @@ begin
   // Before saving the registry it is checked if Data has value, if it hasn’t it will be valued with the current database datetime
   if GetModel.Data.IsEmpty then
   begin
-    // MDB is a class that has utility functions and procedures, like DataHoraDoBanco that retrieves the datetime current value from the database
+    // MDB is a class that has utility functions and procedures, 
+    // like DataHoraDoBanco that retrieves the datetime current value from the database
     GetModel.Data.Value := MDB.DataHoraDoBanco;
   end;
 end;
